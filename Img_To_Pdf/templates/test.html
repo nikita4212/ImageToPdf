@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Images To PDF | Convert PNG/JPG to PDF</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+</head>
+<body>
+{% block body %}
+<h1 class="heading">Image To PDF</h1>
+
+<script src="{% static 'update.js' %}"></script>
+<form method="post" action="simple_upload" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="file-drop-area">
+      <span class="fake-btn">Choose files</span>
+      <span class="file-msg" id="change">or drag and drop files here</span>
+      <input name='myfile' class="file-input" type="file" multiple required onclick="update_file()">
+    </div><br><br>
+    <div>
+        <input type="submit" value="Next">
+    </div>
+</form>
+<form method="post" action="con" >
+    {% csrf_token %}
+    <input type="submit" value="Convert">
+</form>
+
+
+
+{% endblock body %}
+
+</body>
+</html>
